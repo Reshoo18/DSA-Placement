@@ -2,12 +2,17 @@
 #include<vector>
 #include<stack>
 using namespace std;
-vector<int> prevSmaller(vector<int>arr){
-    vector<int> ans(arr.size(),0);
+
+    
+
+
+int main(){
+ vector<int> arr={3,1,0,8,6};
+ vector<int> ans(arr.size(),0);
     stack<int> s;
     for(int i=0;i<arr.size();i++){
-        while(s.size()>=0  && s.top()>=arr[i]){
-            s.top();
+        while(s.size()>0  && s.top()>=arr[i]){
+            s.pop();
         }
         if(s.empty()){
             ans[i]=-1;
@@ -15,15 +20,9 @@ vector<int> prevSmaller(vector<int>arr){
             ans[i]=s.top();
 
         }
-        s.push(i);
+        s.push(arr[i]);
     }
-    return ans;
-}
-
-int main(){
- vector<int> arr={3,1,0,8,6};
- vector<int> ans=prevSmaller(arr);
- for(int val:arr){
+ for(int val:ans){
     cout<<val<<" ";
  }
  cout<<endl;
